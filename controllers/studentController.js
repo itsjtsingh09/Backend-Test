@@ -20,6 +20,15 @@ const createStudent = (req,res) =>{
         });
     })
 }
+
+const getStudent= async(req,res) =>{
+
+  const students = await Student.find();
+  res.status(200).json({
+    msgg: "List of Students",
+    data:students
+})
+};
   
    
-module.exports= {createStudent}
+module.exports= {createStudent,getStudent}
