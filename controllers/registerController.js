@@ -3,7 +3,7 @@ const Student = require("../models/studentModel");
 const Event = require("../models/eventModel");
 const sendEmail = require("../Email/sendEmail");
 
-const registerStudentEvent = async(req, res) =>{
+const registerStudentEvent = async (req, res) =>{
   try {
     const {studentId,eventId } = req.body;
 
@@ -17,7 +17,7 @@ const registerStudentEvent = async(req, res) =>{
     const registration = await Registration.create({ student:studentId,event: eventId});
 
   
-    const subject = `Registration Confirmed for $ {event.title}`;
+    const subject = `Registration Confirmed for  ${event.title}`;
     const text = `Hello ${student.name}, you have successfully registered for ${event.title} on ${event.date.toDateString()} at ${event.venue}.`;
 
     await sendEmail(student.email,subject, text);
@@ -29,7 +29,7 @@ const registerStudentEvent = async(req, res) =>{
 
 const getEventRegistrations =async (req,res) =>{
   try{
-    const {eventId} = req.params.id;
+    const eventId = req.params.id;
     const registrations = await Registration.find({event: eventId}).populate("student");
     res.status(201).json({
         data:[registrations]

@@ -11,12 +11,11 @@ const studentSchema = new mongoose.Schema({
     required: true, 
     unique: true 
     },
-    
+
   year:{
     type: Number, 
     required: true 
     }
 });
 
-const Student = mongoose.model('Student', studentSchema);
-module.exports = {Student}
+module.exports  = mongoose.model('Student', studentSchema);

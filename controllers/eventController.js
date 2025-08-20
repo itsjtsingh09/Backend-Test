@@ -17,9 +17,9 @@ const createEvent= async(req,res)=>{
 const getEvents= async(req,res) =>{
 
   const events = await Event.find();
-  res.status(201).json({
+  res.status(200).json({
     msgg: "List of Events",
-    data:[events]
+    data:events
 })
 };
 

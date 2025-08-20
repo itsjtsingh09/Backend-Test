@@ -7,7 +7,7 @@ const registerRouter=require("./routers/registerRouter")
 const studentRouter=require("./routers/studentRouter")
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use("/api/students",studentRouter);
 app.use("/api/events",eventRouter);
