@@ -29,10 +29,10 @@ const registerStudentEvent = async (req, res) =>{
 
 const getEventRegistrations =async (req,res) =>{
   try{
-    const eventId = req.params.id;
+    const eventId = req.params.eventId;
     const registrations = await Registration.find({event: eventId}).populate("student");
     res.status(201).json({
-        data:registrations
+        data:registrations,
     })
   } catch(err) {
     res.status(400).json({ error: err.message });
